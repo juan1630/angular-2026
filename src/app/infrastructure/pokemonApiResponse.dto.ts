@@ -1,3 +1,15 @@
+// export interface PokeApiListResponse {
+//   count: number;
+//   next: string | null;
+//   previous: string | null;
+//   results: PokeApiPokemonItem[];
+// }
+
+// export interface PokeApiPokemonItem {
+//   name: string;
+//   url: string;
+// }
+
 export interface Pokedex {
     id:                       number;
     name:                     string;

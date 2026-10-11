@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { PokemonCardI } from '../../interfaces/pokeInterface';
+// import { PokemonCardI } from '../../interfaces/pokeInterface';
 
 @Component({
   selector: 'app-pokemon-card',
@@ -34,5 +34,5 @@ import { PokemonCardI } from '../../interfaces/pokeInterface';
   </div>`,
 })
 export class PokemonCard {
-  pokemon = input.required<PokemonCardI>();
+  pokemon = input.required<any>();
 }

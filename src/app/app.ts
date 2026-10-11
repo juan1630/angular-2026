@@ -1,8 +1,8 @@
 import { Component, signal } from '@angular/core';
-import { PokemonList } from './components/pokemonList';
+import { PokemonList } from './implementation/pokemonList.component';
 
 @Component({
-  imports: [ PokemonList],
+  imports: [PokemonList],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',

@@ -1,6 +1,5 @@
-import { PokemonCardI } from '../../../interfaces/pokeInterface';
 
-export const pokemonList: PokemonCardI[] = [
+export const pokemonList:any = [
   {
     pokemonId: 1,
     name: 'bulbasaur',

@@ -1,8 +1,9 @@
 import { Component, signal, OnInit, inject } from '@angular/core';
 import { toObservable } from '@angular/core/rxjs-interop';
-import { concatMap, filter, from, fromEvent, map, mergeMap } from 'rxjs';
-import { PokeService } from '../service/pokemonService';
-import { PokemonCardI } from '../interfaces/pokeInterface';
+import { filter, from, fromEvent, map, mergeMap, tap } from 'rxjs';
+// import { PokeService } from '../service/pokemonService';
+import { PokemonListFacade } from '../implementation/pokemonList.facade'
+
 import { PokemonCard } from './cards/cardPokemon';
 
 @Component({
@@ -10,8 +11,9 @@ import { PokemonCard } from './cards/cardPokemon';
   imports: [PokemonCard],
   template: `
     <div class="h-full" id="scroll">
+      <h3> Clean architecture </h3>
       <div class="grid grid-cols-4">
-        @for (pokemon of pokemonsList(); track pokemon.pokemonId) {
+        @for (pokemon of pokeService.pokemons(); track pokemon.pokemonId) {
           <app-pokemon-card [pokemon]="pokemon" />
         }
       </div>
@@ -27,8 +29,8 @@ import { PokemonCard } from './cards/cardPokemon';
 })
 export class PokemonList implements OnInit {
   offset = signal<number[]>([1, 2, 3, 4, 5, 6, 7]);
-  pokeService = inject(PokeService);
-  pokemonsList = signal<PokemonCardI[]>([]);
+  pokeService = inject(PokemonListFacade);
+  // pokemonsList = signal<PokemonCardI[]>([]);
   pokemonsIds$ = toObservable(this.offset);
 
   nextPokemons() {
@@ -48,18 +50,19 @@ export class PokemonList implements OnInit {
     this.pokemonsIds$
       .pipe(
         mergeMap((id) => from(id)),
-        concatMap((pokemonId) => this.pokeService.getPokemonById(pokemonId)),
-        map(
-          (pokemon) => ({
-            name: pokemon.name,
-            pokemonImage: pokemon?.sprites?.other?.dream_world.front_default ?? '',
-            abilities: pokemon.abilities,
-            pokemonId: pokemon.id,
-          }),
+        tap((id) =>  this.pokeService.load(id)) 
+        // concatMap((pokemonId) => this.pokeService.getPokemonById(pokemonId)),
+        // map(
+        //   (pokemon) => ({
+        //     name: pokemon.name,
+        //     pokemonImage: pokemon?.sprites?.other?.dream_world.front_default ?? '',
+        //     abilities: pokemon.abilities,
+        //     pokemonId: pokemon.id,
+        //   }),
         )
-      )
+      // )
       .subscribe((data) => {
-        this.pokemonsList.update((prev) => [...prev, data]);
+        // this.pokemonsList.update((prev) => [...prev, data]);
       });
   }
 }
