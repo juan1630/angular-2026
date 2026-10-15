@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { PokemonList } from './components/pokemonList';
 
 @Component({
@@ -8,5 +8,4 @@ import { PokemonList } from './components/pokemonList';
   templateUrl: './app.html',
 })
 export class App {
-  protected readonly title = signal('middle-angular');
 }

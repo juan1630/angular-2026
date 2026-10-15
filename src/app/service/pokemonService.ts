@@ -20,7 +20,9 @@ interface Pokemon {
 export class PokeService {
   private http = inject(HttpClient);
   pokemons = signal<string[]>([]);
-
+  
+  constructor(){}
+  
   getPokemons(offset = 0) {
     const URL = `https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}`;
     return this.http
