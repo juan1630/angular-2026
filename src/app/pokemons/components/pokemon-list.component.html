@@ -4,12 +4,13 @@
    @for(pokemon of pokemons(); track pokemon.id) {
    <pokemon-card-view [pokemon]="pokemon" />
 
-   }
+   }@empty {
 
    <!-- empty satte -->
    <div class="col-span-5 text-center border-white h-28 flex justify-center items-center">
 
       No hay pokemons
    </div>
+   }
 
 </div>

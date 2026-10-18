@@ -14,7 +14,5 @@ export class PokemonCardComponent {
     () => {
     return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.pokemon().id}.png`
   })
-  // logEffect = effect(() => {
-  //   console.log('Pokemon card', this.pokemonImage())
-  // })
+
 }

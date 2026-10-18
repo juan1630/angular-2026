@@ -26,7 +26,7 @@
 <section class="flex flex-col font-bold mt-2">
     <div class="flex flex-wrap">
         @for(ability of myPokemon.abilities; track ability.ability){
-        <span class="mx-2" > {{ability.name}} </span>
+        <span class="mx-3 my-3"> {{ability.ability?.name}} </span>
         }
     </div>
 </section>

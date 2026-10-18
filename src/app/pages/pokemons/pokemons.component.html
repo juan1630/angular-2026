@@ -6,14 +6,16 @@
 
 <!-- TODO: POKEMON LIST -->
 @if(pokemons()){
-    <pokemon-list-view [pokemons]="pokemons()" />
+<pokemon-list-view [pokemons]="pokemons()" />
 }@else{
 
-    <pokemon-list-skeleton />
+<pokemon-list-skeleton />
 }
 
 <div class="w-full flex justify-between">
-   <button (click)="loadPokemons(-1)" class="mt-2 bg-blue-500 text-white p-2 rounded-lg cursor-pointer">Anteriores</button>
-   <button (click)="loadPokemons(+1)" class="mt-2 bg-blue-500 text-white p-2 rounded-lg cursor-pointer">Siguientes</button>
+    <button [disabled]="currentPage() === 1" [routerLink]="['/pokemons/page', currentPage()! -1 ]"
+        class="mt-2 bg-blue-500 text-white p-2 rounded-lg cursor-pointer">Anteriores</button>
+    <button [routerLink]="['/pokemons/page', currentPage()! + 1 ]"
+        class="mt-2 bg-blue-500 text-white p-2 rounded-lg cursor-pointer">Siguientes</button>
 </div>
 <!-- TODO: pokemons list skeleton -->
