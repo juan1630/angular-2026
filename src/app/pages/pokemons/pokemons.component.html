@@ -1,0 +1,19 @@
+<h1 class="text-3xl">Pokemon</h1>
+<h2 class="text-xl"> Página actual: {{ currentPage() }}</h2>
+
+<hr class="my-2">
+
+
+<!-- TODO: POKEMON LIST -->
+@if(pokemons()){
+    <pokemon-list-view [pokemons]="pokemons()" />
+}@else{
+
+    <pokemon-list-skeleton />
+}
+
+<div class="w-full flex justify-between">
+   <button (click)="loadPokemons(-1)" class="mt-2 bg-blue-500 text-white p-2 rounded-lg cursor-pointer">Anteriores</button>
+   <button (click)="loadPokemons(+1)" class="mt-2 bg-blue-500 text-white p-2 rounded-lg cursor-pointer">Siguientes</button>
+</div>
+<!-- TODO: pokemons list skeleton -->
