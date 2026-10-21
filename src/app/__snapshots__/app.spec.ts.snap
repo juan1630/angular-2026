@@ -1,0 +1,24 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`App > should match snapshot 1`] = `
+<div
+  id="root2"
+  ng-version="22.2.3"
+>
+  <navbar>
+    <nav>
+      <a
+        href="link"
+      >
+         Test link 
+      </a>
+    </nav>
+  </navbar>
+  <div
+    class="max-w-3xl m-auto mt-16 px-1"
+  >
+    <router-outlet />
+    <!--container-->
+  </div>
+</div>
+`;
